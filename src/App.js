@@ -63,15 +63,35 @@ class App extends React.Component {
     })
   }
 
+  //add interactivity change the showaddform state to show
+  setShowaddForm(show) {
+    this.setState({
+      showAddForm: show
+    })
+  }
+
+  //the spread operator is used to copy the bookmarks array into a new array 
+  //then the new bookmark is added to the end of the new array. 
+  //Also, we can set showAddForm to false here because most likely when the 
+  //new bookmark is added we want to display the list again
+  addBookmark(bookmark) {
+    this.setState({
+      bookmarks: [...this.state.bookmarks, bookmark],
+      showAddForm: false
+    })
+  }
+
   render() {
 
     // 3. add a conditional display, 
     //if the showAddForm is true then display the AddBookmark component, 
     //otherwise display the BookmarkApp component.
     const page = this.state.showAddForm
-        ? <AddBookmark />
+        ? <AddBookmark 
+        showForm={show => this.setShowaddForm(show)}
+        handleAdd ={bookmark => this.addBookmark(bookmark)}/>
         : <BookmarkApp bookmarks=
-        {this.state.bookmarks} />
+        {this.state.bookmarks} showForm={show => this.setShowaddForm(show)} />
     return (
       <div className="App">
         {/* <AddBookmark /> 4. clear the componenst 
