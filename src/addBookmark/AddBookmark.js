@@ -17,6 +17,25 @@ class AddBookmark extends React.Component {
             title
         })
     }
+    
+    urlChanged(url) {
+        this.setState({
+        url
+        });
+    }
+    
+    descriptionChanged(description) {
+        this.setState({
+        description
+        });
+    }
+    
+    ratingChanged(rating) {
+        this.setState({
+        rating
+        });
+    }
+    
 
 
     //1.event.prevent default stops the form to submit the form default behavior
@@ -29,8 +48,7 @@ class AddBookmark extends React.Component {
     //Conditionally we can render an error message on the form.
     handleSubmit(e) {
         e.preventDefault();
-        const {title, url, description, rating} = this.state;
-        const bookmark = {title, url, description, rating};
+        const bookmark = (({title, url, description, rating}) => ({title, url, description, rating}))(this.state);
         const url ='https://tf-ed-bookmarks-api.herokuapp.com/v3/bookmarks';
         const options = {
           method: 'POST',
