@@ -1,4 +1,5 @@
 import React from 'react'
+import './BookmarkList.css'
 import Bookmark from '../bookmark/Bookmark'
 
 class BookmarkList extends React.Component {

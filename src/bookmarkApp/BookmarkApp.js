@@ -1,5 +1,5 @@
 import React from 'react'
-// import './bookmarkApp.css'
+import './BookmarkApp.css'
 import BookmarkList from '../bookmarkList/BookmarkList'
 import Fab from '../fab/fab'
 
